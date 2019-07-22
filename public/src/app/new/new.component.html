@@ -1,0 +1,23 @@
+<main style="text-align:center">
+    <h3>New Product Page</h3>
+    <form (submit)="createProduct()"> <!--the ngIf is angular validations,required #title  id is also part-->
+        <label for="title">Product Name: <input required #title="ngModel" id="title" type="text" name="newProduct.title"
+                [(ngModel)]="newProduct.title"></label>
+                <div *ngIf="title.invalid && (title.dirty || title.touched)">title is required</div>
+                <br>
+        <label for="price">Product Price: <input type="number" name="newProduct.price"
+                [(ngModel)]="newProduct.price"></label><br>
+        <label for="url">Product URL: <input type="text" name="newProduct.url" [(ngModel)]="newProduct.url"></label><br>
+        <button class="btn-outline-primary" [disabled]="title.invalid" type="submit">CREATE PRODUCT</button>
+        <button type="submit" [routerLink]="[ '/products' ]">CANCEL</button>
+    </form>
+    <div *ngFor="let err of errors">
+        <p style="color: red;">{{ err.title.message }}</p>
+        <p style="color: red;" >{{ err.price.message }}</p>
+        <p style="color: red;">{{ err.url.message }}</p>
+
+    </div>
+
+    <router-outlet></router-outlet>
+
+</main>

@@ -1,0 +1,19 @@
+<main style="text-align:center">
+    <h3>Edit Product Page</h3>
+    <form (submit)="updateProduct()">
+        <label for="title">Product Name: <input type="text" name="editProduct.title"
+                [(ngModel)]="editProduct.title"></label><br>
+        <label for="price">Product Price: <input type="number" name="editProduct.price"
+                [(ngModel)]="editProduct.price"></label><br>
+        <label for="url">Product URL: <input type="text" name="editProduct.url"
+                [(ngModel)]="editProduct.url"></label><br>
+        <button class="btn-outline-primary" type="submit">EDIT PRODUCT</button>
+        <button type="submit" [routerLink]="[ '/products' ]">CANCEL</button>
+    </form>
+    <div *ngFor="let err of errors">
+        <p style="color: red;">{{ err.title.message }}</p>
+        <!-- <p style="color: red;" >{{ err.price.message }}</p> -->
+        <p style="color: red;">{{ err.url.message }}</p>
+    </div>
+    <router-outlet></router-outlet>
+</main>

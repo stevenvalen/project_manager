@@ -1,0 +1,27 @@
+<main style="text-align:center">
+    <h3>Here Are Our Products</h3>
+    <div *ngFor="let product of allProducts">
+        <label for="title">Product Name: {{ product.title }}</label>
+        <br>
+        <img src="{{ product.url }}" alt="{{ product.title }}">
+        <br>
+        <label for="price">Product Price: {{ product.price }}</label>
+        <br>
+        <a [routerLink]="[ '/products/edit', product._id ]">EDIT</a>
+        <br>
+        <br>
+        <button (click)="destroyProduct(product._id)">DELETE</button>
+    </div>
+
+
+
+    <div *ngFor="let err of errors">
+        <p style="color: red;">{{ err.title.message }}</p>
+        <!-- <p style="color: red;" >{{ err.price.message }}</p> -->
+        <p style="color: red;">{{ err.url.message }}</p>
+
+    </div>
+
+    <router-outlet></router-outlet>
+
+</main>
